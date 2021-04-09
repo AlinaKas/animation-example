@@ -1,0 +1,109 @@
+:root {
+  --width: 400px;
+  --height: 150px;
+  --depth: 200px;
+}
+
+.base-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 255, 255, 0.144);
+}
+
+.box-side1 {
+  left: calc(50% - var(--width) / 2);
+  top: calc(50% - var(--height) / 2);
+  position: absolute;
+  width: var(--width);
+  height: var(--height);
+  background-color: rgba(255, 11, 64, 0.664);
+  /* эти 2 свойства отправят нас в мир 3d */
+  transform-style: preserve-3d;
+  transform: perspective(400px);
+}
+
+.box-side6 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--width);
+  height: var(--height);
+  background-color: rgba(255, 11, 64, 0.664);
+  transform-origin: 0 0 0;
+  transform: translate3d(0, 0, -200px);
+}
+
+.box-side2 {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: var(--width);
+  height: var(--depth);
+  background-color: rgba(64, 255, 30, 0.672);
+  transform-origin: 0 0 0;
+  transform: rotate3d(1, 0, 0, 270deg);
+}
+
+.box-side3 {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: var(--width);
+  height: var(--depth);
+  background-color: rgba(64, 255, 30, 0.672);
+  transform-origin: 0 0 0;
+  transform: rotate3d(1, 0, 0, 270deg);
+}
+
+.box-side4 {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: var(--depth);
+  height: var(--height);
+  background-color: rgba(0, 42, 182, 0.493);
+  transform-origin: 0 0 0;
+  transform: rotate3d(0, 1, 0, 90deg);
+}
+
+.box-side5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--depth);
+  height: var(--height);
+  background-color: rgba(0, 42, 182, 0.493);
+  transform-origin: 0 0 0;
+  transform: rotate3d(0, 1, 0, 90deg);
+}
+
+/* animatoin */
+
+@keyframes boxRotate {
+  0% {
+    transform: rotate3d(0, 1, 0, 0deg) rotate3d(1, 0, 0, 45deg);
+  }
+  33.2% {
+    transform: rotate3d(0, 1, 0, 720deg) rotate3d(1, 0, 0, 45deg);
+  }
+  33.3% {
+    transform: rotate3d(1, 0, 0, 0deg) rotate3d(0, 1, 0, 45deg);
+  }
+  66.6% {
+    transform: rotate3d(1, 0, 0, 720deg) rotate3d(0, 1, 0, 45deg);
+  }
+  66.7% {
+    transform: rotate3d(0, 0, 1, 0deg) rotate3d(1, 1, 0, 45deg);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 720deg) rotate3d(1, 1, 0, 45deg);
+  }
+}
+
+.box-side1 {
+  animation-name: boxRotate;
+  animation-duration: 18200ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
